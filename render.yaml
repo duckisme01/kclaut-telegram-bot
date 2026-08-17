@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: kclaut-telegram-bot
+    env: python
+    plan: free
+    region: singapore
+    branch: main
+    buildCommand: pip install -r requirements.txt
+    startCommand: python bot.py
+    healthCheckPath: /
+    autoDeploy: true
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: THEKCLAUT_API_KEY
+        sync: false
+      - key: MARKUP_PERCENT
+        value: "0"
+      - key: CURRENCY_LABEL
+        value: NGN
+      - key: PORT
+        value: 10000
